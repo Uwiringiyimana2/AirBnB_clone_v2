@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """generates a .tgz archive from the contents of the web_static folder"""
-from fabric.api import local, run, put, sudo, env
+from fabric.api import local, run, put, env
 from datetime import datetime
 import os.path
 
@@ -57,7 +57,6 @@ def do_deploy(archive_path):
     if run("ln -s /data/web_static/releases/{} /data/web_static/current".
            format(name)).failed is True:
         return False
-    sudo("service nginx restart")
     return True
 
 
